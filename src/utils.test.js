@@ -1,3 +1,4 @@
+import "@testing-library/react";
 import { extractDelimiter, isValidInput, parseNumbers } from "./utils";
 
 describe("extractDelimiter()", () => {

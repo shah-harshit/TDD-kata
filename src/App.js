@@ -1,5 +1,24 @@
 import React, { useState } from "react";
+import { parseNumbers, isValidInput } from "./utils";
 import "./App.css";
+
+const instructions = (
+  <div>
+    <h4>Instructions:</h4>
+    <p>1. Enter comma separated numbers in the input.</p>
+    <p>2. You can enter any amount of numbers.</p>
+    <p>
+      3. You can enter new lines between numbers instead of commas. For example,
+      "1\n2,3".
+    </p>
+    <p>
+      4. To change the delimiter, the beginning of the string will contain a
+      separate line that looks like this: "//[delimiter]\n[numbers…]". For
+      example, "//;\n1;2" where the delimiter is ";".
+    </p>
+    <p>5. Negative numbers are not supported.</p>
+  </div>
+);
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -10,28 +29,24 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const addition = "";
-    alert(`Input Value: ${inputValue} \nAddition: ${addition}`);
-    setInputValue("");
+
+    const parsedNumbers = parseNumbers(inputValue);
+
+    if (isValidInput(parsedNumbers)) {
+      const result = parsedNumbers.reduce((acc, num) => acc + num, 0);
+
+      alert(`Input Value: ${inputValue} \nAddition: ${result}`);
+      setInputValue("");
+    } else {
+      alert(
+        "Invalid input !!\nPlease read instructions carefully and enter a valid input."
+      );
+    }
   };
 
   return (
     <div className="App">
-      <div className="rules-wrapper">
-        <h4>Instructions:</h4>
-        <p>1. Enter comma separated numbers in the input.</p>
-        <p>2. You can enter any amount of numbers.</p>
-        <p>
-          3. You can enter new lines between numbers instead of commas. For
-          example, "1\n2,3".
-        </p>
-        <p>
-          4. To change the delimiter, the beginning of the string will contain a
-          separate line that looks like this: "//[delimiter]\n[numbers…]". For
-          example, "//;\n1;2" where the delimiter is ";".
-        </p>
-        <p>5. Negative numbers are not supported.</p>
-      </div>
+      {instructions}
       <form onSubmit={handleSubmit}>
         <div className="form-wrapper">
           <input
