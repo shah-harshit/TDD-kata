@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tdd-kata/static/css/main.ce99c935.css",
+    "main.js": "/tdd-kata/static/js/main.6e03a998.js",
+    "index.html": "/tdd-kata/index.html",
+    "main.ce99c935.css.map": "/tdd-kata/static/css/main.ce99c935.css.map",
+    "main.6e03a998.js.map": "/tdd-kata/static/js/main.6e03a998.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce99c935.css",
+    "static/js/main.6e03a998.js"
+  ]
+}
